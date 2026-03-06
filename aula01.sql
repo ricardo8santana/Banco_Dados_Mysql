@@ -33,6 +33,8 @@ Criação de tabelas: CREATE TABLE nome_exemplo_tabela
 ======================================================*/
 -- cada coluna da tabela deve ser passada com o seu respectivo tipo de dado
 
+drop table alunos;
+
 create table alunos(
 nome varchar(100), 
 email varchar(120),
@@ -56,7 +58,7 @@ drop table alunos;
 Selecione uma tabela: SELECT * FROM nome_exemplo_tabela
 =======================================================*/
 
-select * from alunos;
+ 
 
 /*=====================================================
 Inserindo dados na tabela: INSERT INTO nome_exemplo_tabela
@@ -64,6 +66,11 @@ Inserindo dados na tabela: INSERT INTO nome_exemplo_tabela
 
 insert into alunos (nome, email, idade) 
 values ('Ricardo', 'Ricardo@proton.me', 27);
+
+insert into alunos (nome, email, idade) 
+values ('Louis', 'louis@proton.me', 17);
+
+select * from alunos;
 
 create table livro(
 titulo varchar(12), 
@@ -81,12 +88,87 @@ select * from livro;
 
 drop table livro;
 
+use biblioteca;
+show tables;
 
 
 
 
+use escola;
+
+-- id_aluno é a CHAVE PRIMARIA (PRIMARY KEY)
+-- Ela garante que cada aluno tenha um identificador único.
+-- NOT NULL significa "obrigatorio"(não pode ficar vazio)
 
 
+create table alunos(
+id_aluno int primary key not null,
+nome varchar(100) not null,
+idade int, 
+turma varchar(50)
+);
+
+select * from alunos;
+insert into alunos (id_aluno, nome, idade, turma)
+values('1','Victor Hallan', '21', 'IOT 01'),
+('2', 'Arthur', '19', 'IOT 01');
+
+insert into alunos (id_aluno, nome, idade, turma)
+values('3','Melissa', '21', 'TDS01'),
+('4','João', '17', 'TDS01');
+
+-- Para apagar a linha usamos o DELETE
+delete from alunos where id_aluno = 3;
+
+-- UPDATE altera dados existentes.
+-- WHERE é essencial para não alterar a tabela inteira por acidente.
+
+update alunos
+set turma = "TST", idade = 15
+where id_aluno = 4;
+
+-- Autoriza a fazer alteração e atualização do banco de dados
+set SQL_SAFE_UPDATES = 0;
+
+select * from alunos;
+
+-- Auto_INCREMENT faz o MYSQL gerar um número automaticamente (1, 2, 3...)
+-- ENUM registre os valores possíveis.
+-- Ensina "domínio" (regras de negócio na tabela).
+-- O DEFAULT diz qual a opção padrão em caso de não preencher no momento do insert 
+create table professor(
+id_professor int primary key auto_increment,
+nome varchar(100) not null,
+disciplina varchar(150),
+tipo_contrato enum('CLT', 'PJ', 'Concurso') default 'CLT'
+);
+
+drop table professor;
+
+insert into professor (nome, disciplina, tipo_contrato)
+values ('Laercio', 'Banco de dados', 'PJ');
+
+insert into professor (nome, disciplina)
+values('Ana Claudia', 'Lógica');
+
+select * from professor;
+
+update professor
+set  nome = "Ana da TI"
+where id_professor = 2;
+
+update professor
+set  tipo_contrato = "Concurso"
+where id_professor = 1;
+
+insert into professor (nome, disciplina, tipo_contrato)
+values ('Adalberto', 'Aplicativos', 'PJ');
+
+/*
+Atualizar o nome da professora "Ana Claudia" para "Ana do TI"
+Atualizar o contrato do professor Laércio para "Concurso"
+Inserir o professor "Adalberto" da disciplina de "Aplicativos" com o contrato "PJ"
+*/
 
 
 
