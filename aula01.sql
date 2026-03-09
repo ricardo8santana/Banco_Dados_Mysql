@@ -199,4 +199,15 @@ values ('TIPI', '35A', 'Noite', 2);
 select * from turma
 where periodo = "Manhã";
 
+select * from professor;
+select * from turma;
+select * from alunos;
+
+insert into alunos (nome, idade, id_turma)
+values ("Joãozinho", 17, 1),
+	   ("Melissa", 23, 1),
+       ("Eduarda", 26, 2),
+       ("Marquinho", 19, 2);
+       
+
 
