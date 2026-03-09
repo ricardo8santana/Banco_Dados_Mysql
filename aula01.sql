@@ -102,11 +102,15 @@ use escola;
 
 
 create table alunos(
-id_aluno int primary key not null,
+id_aluno int primary key auto_increment,
 nome varchar(100) not null,
 idade int, 
-turma varchar(50)
+turma varchar(50),
+id_turma int not null,
+foreign key (id_id_turma) references turma(id_turma)
 );
+
+drop table alunos;
 
 select * from alunos;
 insert into alunos (id_aluno, nome, idade, turma)
@@ -182,11 +186,10 @@ show tables;
 insert into turma (nome_turma, sala, periodo)
 values ('IOT01', '35B', 'Manhã');
 
-
-
 insert into turma (nome_turma, sala, periodo)
 values ('TPI', '35A', 'Manhã');
 
-select * from turma;
+select * from turma
+where periodo = "Manhã";
 
 
