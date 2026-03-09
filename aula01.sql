@@ -177,7 +177,16 @@ sala char(3),
 periodo enum("Manhã", "Tarde", "Noite") 
 );
 
-show tables
+show tables;
 
+insert into turma (nome_turma, sala, periodo)
+values ('IOT01', '35B', 'Manhã');
+
+
+
+insert into turma (nome_turma, sala, periodo)
+values ('TPI', '35A', 'Manhã');
+
+select * from turma;
 
 
