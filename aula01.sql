@@ -105,7 +105,6 @@ create table alunos(
 id_aluno int primary key auto_increment,
 nome varchar(100) not null,
 idade int, 
-turma varchar(50),
 id_turma int not null,
 foreign key (id_turma) references turma(id_turma)
 );
@@ -115,13 +114,13 @@ show tables;
 drop table alunos;
 
 select * from alunos;
-insert into alunos (id_aluno, nome, idade, turma)
-values('1','Victor Hallan', '21', 'IOT 01'),
-('2', 'Arthur', '19', 'IOT 01');
+insert into alunos (nome, idade, id_turma)
+values('Gabriel', '21', 1),
+      ('João', '19', 2);
 
-insert into alunos (id_aluno, nome, idade, turma)
+insert into alunos (nome, idade, id_turma)
 values('3','Melissa', '21', 'TDS01'),
-('4','João', '17', 'TDS01');
+      ('4','João', '17', 'TDS01');
 
 -- Para apagar a linha usamos o DELETE
 delete from alunos where id_aluno = 3;
