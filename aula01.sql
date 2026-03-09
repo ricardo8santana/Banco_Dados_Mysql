@@ -141,6 +141,7 @@ select * from alunos;
 -- ENUM registre os valores possíveis.
 -- Ensina "domínio" (regras de negócio na tabela).
 -- O DEFAULT diz qual a opção padrão em caso de não preencher no momento do insert 
+
 create table professor(
 id_professor int primary key auto_increment,
 nome varchar(100) not null,
@@ -179,16 +180,21 @@ create table turma (
 id_turma int primary key auto_increment,
 nome_turma varchar (50) not null,
 sala char(3),
-periodo enum("Manhã", "Tarde", "Noite") 
+periodo enum("Manhã", "Tarde", "Noite"), 
+id_professor int not null,
+foreign key (id_professor) references professor(id_professor) 
 );
+
+drop table turma;
 
 show tables;
 
-insert into turma (nome_turma, sala, periodo)
-values ('IOT01', '35B', 'Manhã');
 
-insert into turma (nome_turma, sala, periodo)
-values ('TPI', '35A', 'Manhã');
+insert into turma (nome_turma, sala, periodo, id_professor)
+values ('IOT01', '35B', 'Manhã', 1);
+
+insert into turma (nome_turma, sala, periodo, id_professor)
+values ('TIPI', '35A', 'Noite', 2);
 
 select * from turma
 where periodo = "Manhã";
