@@ -107,8 +107,10 @@ nome varchar(100) not null,
 idade int, 
 turma varchar(50),
 id_turma int not null,
-foreign key (id_id_turma) references turma(id_turma)
+foreign key (id_turma) references turma(id_turma)
 );
+
+show tables;
 
 drop table alunos;
 
