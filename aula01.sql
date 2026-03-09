@@ -145,6 +145,12 @@ tipo_contrato enum('CLT', 'PJ', 'Concurso') default 'CLT'
 
 drop table professor;
 
+/*
+Atualizar o nome da professora "Ana Claudia" para "Ana do TI"
+Atualizar o contrato do professor Laércio para "Concurso"
+Inserir o professor "Adalberto" da disciplina de "Aplicativos" com o contrato "PJ"
+*/
+
 insert into professor (nome, disciplina, tipo_contrato)
 values ('Laercio', 'Banco de dados', 'PJ');
 
@@ -164,13 +170,14 @@ where id_professor = 1;
 insert into professor (nome, disciplina, tipo_contrato)
 values ('Adalberto', 'Aplicativos', 'PJ');
 
-/*
-Atualizar o nome da professora "Ana Claudia" para "Ana do TI"
-Atualizar o contrato do professor Laércio para "Concurso"
-Inserir o professor "Adalberto" da disciplina de "Aplicativos" com o contrato "PJ"
-*/
+create table turma (
+id_turma int primary key auto_increment,
+nome_turma varchar (50) not null,
+sala char(3),
+periodo enum("Manhã", "Tarde", "Noite") 
+);
 
-
+show tables
 
 
 
